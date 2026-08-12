@@ -1,45 +1,603 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Portfolio — 2nd Year</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#0c0c0c;--text:#d7e2ea;--muted:#88919a;--line:rgba(215,226,234,.18);--lime:#d9ff56}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Pretendard,Arial,sans-serif;overflow-x:hidden}.wrap{overflow:clip}a{color:inherit;text-decoration:none}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:27px clamp(20px,4vw,62px);position:absolute;top:0;width:100%;z-index:4;text-transform:uppercase;font:12px 'DM Mono',monospace;letter-spacing:.08em}.brand{color:var(--lime);font-weight:bold}.navlinks{display:flex;gap:clamp(14px,3vw,42px)}.navlinks a:hover{opacity:.6}
-    .hero{height:100svh;min-height:640px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:0 clamp(20px,4vw,62px) 34px}.eyebrow{font:12px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.11em;color:var(--lime)}h1{margin:0;position:relative;z-index:2;font-size:clamp(72px,15.1vw,252px);line-height:.79;letter-spacing:-.09em;font-weight:900;text-transform:uppercase;background:linear-gradient(180deg,#f1f6f9 0%,#68717b 100%);-webkit-background-clip:text;color:transparent;white-space:nowrap}.hero-title{margin-top:auto;margin-bottom:auto;transform:translateY(20px)}.orb{position:absolute;left:50%;top:50%;width:min(38vw,520px);aspect-ratio:1;transform:translate(-50%,-43%);border-radius:50%;background:radial-gradient(circle at 30% 28%,#f9ffab 0 2%,#d6ff55 9%,#6b8b11 36%,#172100 64%,transparent 66%);filter:drop-shadow(0 0 90px rgba(188,255,40,.16));z-index:1;animation:float 7s ease-in-out infinite}.orb:after{content:"";position:absolute;inset:-11%;border:1px solid rgba(217,255,86,.35);border-radius:50%;transform:rotateX(67deg) rotateZ(-19deg)}@keyframes float{50%{transform:translate(-50%,-48%) rotate(5deg)}}.hero-bottom{z-index:3;display:flex;align-items:end;justify-content:space-between;gap:30px}.intro{max-width:265px;margin:0;color:#c3cbd0;text-transform:uppercase;font:clamp(11px,1.2vw,17px)/1.55 'DM Mono',monospace;letter-spacing:.02em}.button{border:1px solid var(--lime);background:var(--lime);color:#101500;border-radius:999px;padding:16px 25px;text-transform:uppercase;font:12px 'DM Mono',monospace;letter-spacing:.08em;transition:.25s}.button:hover{background:transparent;color:var(--lime)}
-    .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:18px 0;color:#9da8b0;font:clamp(18px,2.5vw,38px)/1 'DM Mono',monospace;text-transform:uppercase}.ticker div{display:inline-block;animation:slide 22s linear infinite}.ticker b{color:var(--lime);font-weight:400}@keyframes slide{to{transform:translateX(-50%)}}
-    section{padding:clamp(90px,12vw,180px) clamp(20px,8vw,128px)}.label{font:12px 'DM Mono',monospace;color:var(--lime);letter-spacing:.1em;text-transform:uppercase;margin-bottom:25px}.section-title{font-size:clamp(50px,10vw,150px);line-height:.82;letter-spacing:-.08em;text-transform:uppercase;margin:0 0 clamp(40px,7vw,90px);font-weight:900;background:linear-gradient(180deg,#e9f0f3,#68717b);-webkit-background-clip:text;color:transparent}.about{min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative}.about-copy{font-size:clamp(24px,3.4vw,51px);line-height:1.35;letter-spacing:-.045em;max-width:1000px;margin:0}.about-copy em{font-style:normal;color:var(--lime)}.coordinates{margin-top:55px;display:flex;gap:35px;flex-wrap:wrap;font:11px 'DM Mono',monospace;color:var(--muted);text-transform:uppercase}.coordinates span:before{content:'✦ ';color:var(--lime)}
-    .skills{background:#f4f5f2;color:#101010;border-radius:54px 54px 0 0}.skills .label{color:#546500}.skills .section-title{background:none;color:#101010}.skill{display:grid;grid-template-columns:clamp(70px,13vw,180px) 1fr;gap:22px;border-top:1px solid rgba(0,0,0,.18);padding:clamp(25px,4vw,60px) 0}.skill-num{font:900 clamp(45px,8vw,110px)/.8 Pretendard,sans-serif;letter-spacing:-.08em}.skill h3{margin:0 0 13px;font-size:clamp(22px,3vw,42px);text-transform:uppercase;letter-spacing:-.05em}.skill p{margin:0;max-width:680px;color:#4a4a45;font-size:clamp(15px,1.6vw,20px);line-height:1.65}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{border:1px solid #aaa;padding:6px 9px;border-radius:99px;font:10px 'DM Mono',monospace;text-transform:uppercase}
-    .roadmap{border-radius:54px 54px 0 0;margin-top:-45px;position:relative;background:var(--bg)}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.project{min-height:420px;border:1px solid var(--line);border-radius:30px;padding:25px;display:flex;flex-direction:column;justify-content:space-between;position:sticky;top:35px;background:#111;overflow:hidden}.project:before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-35px;top:-25px;background:radial-gradient(circle at 35% 30%,#efffb2,#b2dc28 18%,#2d4100 54%,transparent 70%);opacity:.8}.project:nth-child(2):before{background:radial-gradient(circle at 35% 30%,#d8d3ff,#8a75f3 22%,#261a58 58%,transparent 70%)}.project:nth-child(3):before{background:radial-gradient(circle at 35% 30%,#ffc5a5,#ef6925 22%,#4e1700 58%,transparent 70%)}.project .number{color:var(--lime);font:12px 'DM Mono',monospace}.project h3{font-size:clamp(24px,2.5vw,38px);line-height:.95;letter-spacing:-.06em;margin:15px 0;text-transform:uppercase;max-width:260px}.project p{color:#a7b0b6;line-height:1.6;margin:0;font-size:15px}.project small{font:11px 'DM Mono',monospace;text-transform:uppercase;color:#768089}
-    footer{padding:100px clamp(20px,8vw,128px) 30px;border-top:1px solid var(--line)}.contact-title{font-size:clamp(54px,12vw,180px);line-height:.8;letter-spacing:-.09em;text-transform:uppercase;margin:15px 0 50px;font-weight:900}.contact-title span{color:var(--lime)}.footer-row{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:19px;color:var(--muted);font:11px 'DM Mono',monospace;text-transform:uppercase}.reveal{animation:up .8s both}@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-    @media(max-width:700px){.navlinks a:nth-child(2){display:none}.hero{min-height:570px}.orb{width:76vw;top:48%}.hero-title{transform:translateY(0)}h1{font-size:16.8vw}.hero-bottom{align-items:flex-start;flex-direction:column}.button{padding:13px 18px}.project-grid{grid-template-columns:1fr}.project{min-height:300px;position:relative;top:auto}.skills,.roadmap{border-radius:35px 35px 0 0}.footer-row{flex-direction:column}.about-copy{font-size:26px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이주형 — AI융합학과</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E17;
+    --bg-soft:#0F1522;
+    --surface:#141B2B;
+    --surface-2:#1B2438;
+    --line:rgba(255,255,255,0.08);
+    --text:#EDEFF3;
+    --text-dim:#8A93A6;
+    --blue:#4FA8E0;
+    --green:#3ECF8E;
+    --red:#F26B5E;
+    --yellow:#F2C94C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    overflow-x:clip;
+    line-height:1.6;
+  }
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  ::selection{background:var(--blue); color:#0A0E17;}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(10,14,23,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    height:64px;
+  }
+  nav .logo{font-family:'Space Grotesk'; font-weight:700; font-size:1.05rem;}
+  nav .logo span{color:var(--blue);}
+  nav ul{list-style:none; display:flex; gap:32px;}
+  nav a{
+    font-size:0.85rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em;
+    transition:color 0.2s;
+  }
+  nav a:hover{color:var(--text);}
+  @media (max-width:640px){ nav ul{gap:16px;} nav a{font-size:0.7rem;} }
+
+  /* HERO */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative;
+    padding-top:64px;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(600px 400px at 85% 20%, rgba(79,168,224,0.12), transparent 60%),
+      radial-gradient(500px 350px at 15% 80%, rgba(62,207,142,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--blue);
+    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:20px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:24px; height:1px; background:var(--blue);}
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 5.2rem);
+    line-height:1.02;
+    margin-bottom:22px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg, var(--blue) 0%, var(--green) 50%, var(--yellow) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .hero p.lead{
+    font-size:clamp(1rem, 2vw, 1.25rem);
+    color:var(--text-dim);
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:100px;
+    font-size:0.9rem; font-weight:500; letter-spacing:0.02em;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg, var(--blue), var(--green));
+    color:#06101a;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(79,168,224,0.5); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--text);
+  }
+  .btn-ghost:hover{ border-color:var(--text-dim); background:rgba(255,255,255,0.03); }
+
+  /* hero chart */
+  .hero-chart{ width:100%; max-width:640px; }
+  .hero-chart svg{ width:100%; height:auto; display:block; }
+  .dot{ animation:pop 0.5s ease backwards; }
+  .fit-line{
+    stroke-dasharray:600; stroke-dashoffset:600;
+    animation:draw 1.6s 0.4s ease forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes pop{ from{ opacity:0; transform:scale(0);} to{ opacity:1; transform:scale(1);} }
+
+  /* SECTION shared */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ margin-bottom:56px; }
+  .section-num{ font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim); margin-bottom:10px; }
+  .section-head h2{ font-size:clamp(1.8rem, 4vw, 2.6rem); }
+  .section-head p{ color:var(--text-dim); max-width:520px; margin-top:14px; }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ABOUT / timeline */
+  #about{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{
+    content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(var(--blue), var(--green));
+  }
+  .term{ position:relative; margin-bottom:44px; }
+  .term:last-child{ margin-bottom:0; }
+  .term::before{
+    content:''; position:absolute; left:-28px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg-soft); border:2px solid var(--blue);
+  }
+  .term.g::before{ border-color:var(--green); }
+  .term-label{ font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--blue); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.06em;}
+  .term.g .term-label{ color:var(--green); }
+  .course-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .course-tag{
+    font-size:0.9rem; padding:8px 16px; border-radius:8px;
+    background:var(--surface); border:1px solid var(--line); color:var(--text);
+  }
+
+  /* PROJECT */
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+    margin-bottom:56px;
+  }
+  .project-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .project-top h3{ font-size:clamp(1.4rem,3vw,1.9rem); }
+  .project-top .tag{
+    font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--yellow);
+    border:1px solid rgba(242,201,76,0.35); padding:5px 12px; border-radius:100px;
+  }
+  .project-desc{ color:var(--text-dim); max-width:640px; margin:14px 0 36px; }
+
+  .stage-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:18px; margin-bottom:36px;
+  }
+  .stage{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:22px;
+  }
+  .stage svg{ width:100%; height:90px; display:block; margin-bottom:16px; }
+  .stage h4{ font-size:1rem; font-weight:600; margin-bottom:8px; font-family:'Space Grotesk'; }
+  .stage p{ font-size:0.85rem; color:var(--text-dim); }
+
+  .metrics{
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .metric{
+    flex:1; min-width:150px;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:20px;
+  }
+  .metric .k{ font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; }
+  .metric .v{ font-family:'Space Grotesk'; font-size:1.7rem; font-weight:700; margin-top:6px; }
+  .metric.blue .v{ color:var(--blue); }
+  .metric.green .v{ color:var(--green); }
+
+  .stack-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .chip{
+    font-family:'JetBrains Mono'; font-size:0.75rem;
+    padding:6px 12px; border-radius:6px; background:var(--surface-2); border:1px solid var(--line); color:var(--text-dim);
+  }
+
+  /* SKILLS */
+  #skills{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .skill-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .skill-cell{ background:var(--bg-soft); padding:26px; }
+  .skill-cell .dotc{ width:8px; height:8px; border-radius:50%; margin-bottom:14px; }
+  .skill-cell h4{ font-size:1rem; margin-bottom:6px; }
+  .skill-cell p{ font-size:0.82rem; color:var(--text-dim); }
+
+  /* CONTACT */
+  #contact .wrap{ text-align:center; }
+  #contact h2{ font-size:clamp(2rem,6vw,3.4rem); margin-bottom:20px; }
+  #contact p{ color:var(--text-dim); max-width:440px; margin:0 auto 36px; }
+  .contact-row{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+
+  footer{
+    border-top:1px solid var(--line); padding:28px 0; text-align:center;
+    color:var(--text-dim); font-size:0.8rem; font-family:'JetBrains Mono';
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+</style>
 </head>
 <body>
-<main class="wrap">
-  <section class="hero" id="home">
-    <nav><a class="brand" href="#home">AI / PORTFOLIO</a><div class="navlinks"><a href="#about">About</a><a href="#skills">Learning</a><a href="#roadmap">Roadmap</a><a href="#contact">Contact</a></div></nav>
-    <div class="orb" aria-hidden="true"></div>
-    <div class="hero-title reveal"><p class="eyebrow">AI Convergence · 2nd year student</p><h1>Think<br>in AI</h1></div>
-    <div class="hero-bottom reveal"><p class="intro">배운 것을 연결하고, 질문을 데이터로 바꾸는 AI융합학과 2학년 학생입니다.</p><a class="button" href="#about">Scroll to explore ↓</a></div>
-  </section>
-  <div class="ticker"><div><b>머신러닝 기초</b> · Optimization Theory · <b>인공신경망 기초</b> · ADsP 준비 중 · SQLD 준비 중 · &nbsp; <b>머신러닝 기초</b> · Optimization Theory · <b>인공신경망 기초</b> · ADsP 준비 중 · SQLD 준비 중 · &nbsp;</div></div>
-  <section class="about" id="about"><p class="label">01 / About me</p><h2 class="section-title">Growing<br>with questions.</h2><p class="about-copy">아직 정답을 많이 가진 사람은 아니지만, <em>좋은 질문을 꾸준히 만드는 사람</em>입니다. 모델이 왜 학습되는지, 최적의 답은 어떻게 찾아지는지, 데이터는 어떤 이야기를 하는지 배우며 AI의 기본기를 차근차근 쌓고 있습니다.</p><div class="coordinates"><span>AI Convergence</span><span>Undergraduate / Year 2</span><span>Seoul, Korea</span></div></section>
-  <section class="skills" id="skills"><p class="label">02 / Current learning</p><h2 class="section-title">Foundation<br>in progress</h2>
-    <article class="skill"><div class="skill-num">01</div><div><h3>Machine Learning Basics</h3><p>데이터에서 패턴을 찾고, 예측 모델이 작동하는 흐름을 학습했습니다. 문제 정의부터 학습·평가까지의 과정을 이해하는 데 집중하고 있습니다.</p><div class="tags"><span class="tag">Supervised learning</span><span class="tag">Evaluation</span><span class="tag">Data thinking</span></div></div></article>
-    <article class="skill"><div class="skill-num">02</div><div><h3>Optimization Theory</h3><p>복잡한 문제에서 더 나은 해를 탐색하는 원리와 수학적 사고를 익혔습니다. AI 모델의 학습이 ‘최적화’와 연결된다는 점을 이해하고 있습니다.</p><div class="tags"><span class="tag">Objective function</span><span class="tag">Constraints</span><span class="tag">Problem solving</span></div></div></article>
-    <article class="skill"><div class="skill-num">03</div><div><h3>Neural Network Basics</h3><p>신경망의 구조와 학습 원리를 바탕으로, 딥러닝 모델이 데이터를 표현하고 개선하는 방식을 학습했습니다.</p><div class="tags"><span class="tag">Neural networks</span><span class="tag">Learning process</span><span class="tag">Deep learning</span></div></div></article>
-  </section>
-  <section class="roadmap" id="roadmap"><p class="label">03 / Learning roadmap</p><h2 class="section-title">Next<br>signals</h2><div class="project-grid">
-    <article class="project"><div><small class="number">NOW / CERTIFICATION</small><h3>Data literacy</h3><p>ADsP를 준비하며 데이터 분석의 기초 개념, 해석 과정, 윤리적 활용을 체계적으로 정리하고 있습니다.</p></div><small>ADsP · Preparing</small></article>
-    <article class="project"><div><small class="number">NOW / CERTIFICATION</small><h3>Query &amp; structure</h3><p>SQLD를 준비하며 데이터베이스 구조와 SQL 활용 역량을 쌓고 있습니다. 분석의 출발점인 데이터에 더 가까워지고 있습니다.</p></div><small>SQLD · Preparing</small></article>
-    <article class="project"><div><small class="number">NEXT / PERSONAL WORK</small><h3>First data project</h3><p>수업에서 익힌 개념을 실제 데이터 문제에 적용하는 첫 개인 프로젝트를 계획하고 있습니다. 주제 선정부터 결과 공유까지 경험하는 것이 목표입니다.</p></div><small>Coming next</small></article>
-  </div></section>
-  <footer id="contact"><p class="label">04 / Contact</p><h2 class="contact-title">Let’s make<br><span>learning</span> visible.</h2><a class="button" href="https://github.com/twhyung-Lee" target="_blank" rel="noreferrer">GitHub ↗</a><div class="footer-row"><span>AI Convergence Student</span><span>© 2026 · Portfolio</span><span>GitHub / twhyung-Lee</span></div></footer>
-</main>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">이주형<span>.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap" style="display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;">
+    <div>
+      <div class="eyebrow">AI융합학과 · 2학년</div>
+      <h1>데이터로 질문에<br><span class="grad">답을 찾습니다</span></h1>
+      <p class="lead">선형대수·최적화·머신러닝을 배우며, 수식을 코드로 직접 구현해 원리를 확인하는 걸 좋아하는 학생 이주형입니다.</p>
+      <div class="hero-actions">
+        <a href="#project" class="btn btn-primary">프로젝트 보기</a>
+        <a href="#about" class="btn btn-ghost">이력 보기</a>
+      </div>
+    </div>
+    <div class="hero-chart">
+      <svg viewBox="0 0 400 260" fill="none">
+        <line x1="30" y1="220" x2="380" y2="220" stroke="#233047" stroke-width="1"/>
+        <line x1="30" y1="20" x2="30" y2="220" stroke="#233047" stroke-width="1"/>
+        <g class="dot">
+          <circle cx="55"  cy="185" r="4" fill="#4FA8E0" opacity="0.85"/>
+          <circle cx="80"  cy="160" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.05s"/>
+          <circle cx="105" cy="175" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.1s"/>
+          <circle cx="130" cy="140" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.15s"/>
+          <circle cx="155" cy="150" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.2s"/>
+          <circle cx="180" cy="120" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.25s"/>
+          <circle cx="205" cy="130" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.3s"/>
+          <circle cx="230" cy="100" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.35s"/>
+          <circle cx="255" cy="108" r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.4s"/>
+          <circle cx="280" cy="85"  r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.45s"/>
+          <circle cx="305" cy="90"  r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.5s"/>
+          <circle cx="330" cy="65"  r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.55s"/>
+          <circle cx="355" cy="70"  r="4" fill="#4FA8E0" opacity="0.85" style="animation-delay:0.6s"/>
+        </g>
+        <path class="fit-line" d="M40 200 L365 55" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#4FA8E0"/>
+            <stop offset="50%" stop-color="#3ECF8E"/>
+            <stop offset="100%" stop-color="#F2C94C"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">01 · About</div>
+      <h2>배운 것들</h2>
+      <p>이론 수업에서 배운 개념을 직접 코드로 옮겨보며 이해하는 걸 좋아합니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="term reveal">
+        <div class="term-label">1학년</div>
+        <div class="course-row">
+          <span class="course-tag">선형대수학</span>
+          <span class="course-tag">파이썬 프로그래밍</span>
+          <span class="course-tag">확률과 통계</span>
+        </div>
+      </div>
+      <div class="term g reveal">
+        <div class="term-label">2학년 1학기</div>
+        <div class="course-row">
+          <span class="course-tag">머신러닝</span>
+          <span class="course-tag">최적화 이론</span>
+          <span class="course-tag">인공신경망</span>
+          <span class="course-tag">C언어 프로그래밍</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">02 · Project</div>
+      <h2>Featured Projects</h2>
+      <p>머신러닝·최적화이론·인공신경망 수업에서 진행한 프로젝트들입니다.</p>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <h3>AAPL 주가 데이터 기반<br>회귀분석 모델 비교 연구</h3>
+        <span class="tag">Machine Learning</span>
+      </div>
+      <p class="project-desc">
+        Apple(AAPL) 5개년 일별 종가 데이터를 활용해, 정규방정식과 경사하강법이라는
+        서로 다른 두 학습 방식부터 다항회귀·정규화까지 회귀분석의 전 과정을
+        직접 구현하고 비교했습니다.
+      </p>
+
+      <div class="stage-grid">
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><circle cx="20" cy="70" r="3" fill="#4FA8E0"/><circle cx="45" cy="55" r="3" fill="#4FA8E0"/><circle cx="70" cy="60" r="3" fill="#4FA8E0"/><circle cx="95" cy="40" r="3" fill="#4FA8E0"/><circle cx="120" cy="45" r="3" fill="#4FA8E0"/><circle cx="145" cy="25" r="3" fill="#4FA8E0"/><circle cx="170" cy="30" r="3" fill="#4FA8E0"/><line x1="15" y1="72" x2="180" y2="18" stroke="#F26B5E" stroke-width="2"/></svg>
+          <h4>데이터 & 전처리</h4>
+          <p>yfinance로 일별 시세 수집, 시간 순서를 Day_Count 특성으로 설계 후 정규화·8:2 분할</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><path d="M20 75 Q60 20 100 45" stroke="#3ECF8E" stroke-width="2" fill="none"/><path d="M20 75 Q60 60 100 45" stroke="#4FA8E0" stroke-width="2" fill="none" stroke-dasharray="4 3"/><circle cx="100" cy="45" r="4" fill="#F2C94C"/></svg>
+          <h4>정규방정식 vs 경사하강법</h4>
+          <p>행렬 연산으로 구한 최적해와 배치·SGD·미니배치 경사하강법 결과를 직접 비교 검증</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><path d="M15 65 Q100 20 185 55" stroke="#3ECF8E" stroke-width="2.5" fill="none"/><path d="M15 70 Q40 10 65 60 Q90 100 115 30 Q140 -10 165 65 Q175 80 185 50" stroke="#F26B5E" stroke-width="1.5" fill="none" opacity="0.8"/></svg>
+          <h4>다항회귀 & 과적합</h4>
+          <p>2차(초록) vs 15차(빨강) 다항식 비교로 과적합 현상을 시각적으로 확인</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="30" y="20" width="18" height="55" fill="#F26B5E" opacity="0.85"/><rect x="90" y="40" width="18" height="35" fill="#3ECF8E" opacity="0.85"/><rect x="150" y="50" width="18" height="25" fill="#F2C94C" opacity="0.85"/><line x1="15" y1="75" x2="185" y2="75" stroke="#233047"/></svg>
+          <h4>정규화(L1 · L2) 비교</h4>
+          <p>패널티 없음 · Ridge(L2) · Lasso(L1)의 가중치 크기를 비교해 규제 효과를 정량 분석</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric blue">
+          <div class="k">Test RMSE</div>
+          <div class="v mono">↓ 낮을수록 좋음</div>
+        </div>
+        <div class="metric green">
+          <div class="k">Test R² Score</div>
+          <div class="v mono">↑ 1에 가까울수록 좋음</div>
+        </div>
+      </div>
+
+      <div class="stack-row">
+        <span class="chip">Python</span>
+        <span class="chip">yfinance</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">pandas</span>
+        <span class="chip">scikit-learn</span>
+        <span class="chip">Matplotlib</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <h3>선형계획법 기반<br>생산계획 최적화</h3>
+        <span class="tag" style="color:var(--blue); border-color:rgba(79,168,224,0.35);">Optimization</span>
+      </div>
+      <p class="project-desc">
+        서로 다른 3개의 생산·재고 계획 문제(부경산업, 인성산업, 아산전자)를 선형계획(LP) 모델로
+        정식화하고, Excel 해찾기와 Lingo 두 가지 도구로 각각 풀어 결과를 교차검증했습니다.
+      </p>
+
+      <div class="stage-grid">
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><text x="20" y="35" font-family="JetBrains Mono" font-size="15" fill="#4FA8E0">Min Z</text><line x1="20" y1="48" x2="120" y2="48" stroke="#233047" stroke-width="1"/><text x="20" y="68" font-family="JetBrains Mono" font-size="13" fill="#8A93A6">s.t. Ax ≤ b</text></svg>
+          <h4>문제 정식화</h4>
+          <p>변수·제약조건·목적함수를 정의해 3개의 생산계획 문제를 LP 모델로 설계</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="20" y="20" width="160" height="50" rx="6" fill="none" stroke="#3ECF8E" stroke-width="1.5"/><line x1="20" y1="35" x2="180" y2="35" stroke="#3ECF8E" stroke-width="1"/><line x1="60" y1="20" x2="60" y2="70" stroke="#3ECF8E" stroke-width="1"/><line x1="120" y1="20" x2="120" y2="70" stroke="#3ECF8E" stroke-width="1"/></svg>
+          <h4>Excel 해찾기 최적화</h4>
+          <p>해찾기(Solver)로 최적 생산·재고량 산출, 해답보고서로 제약조건 만족 여부 확인</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="15" y="15" width="80" height="60" rx="4" fill="none" stroke="#F2C94C" stroke-width="1.5"/><rect x="105" y="15" width="80" height="60" rx="4" fill="none" stroke="#F2C94C" stroke-width="1.5"/><path d="M95 45 L105 45" stroke="#F2C94C" stroke-width="1.5" marker-end="url(#arrow)"/><defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F2C94C"/></marker></defs></svg>
+          <h4>Lingo 교차검증</h4>
+          <p>동일 모델을 Lingo로 재풀이해 목적함수 값과 최적해를 상호 검증</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><line x1="20" y1="70" x2="180" y2="70" stroke="#233047"/><path d="M20 60 L60 40 L100 45 L140 20 L180 30" stroke="#F26B5E" stroke-width="2" fill="none"/><circle cx="140" cy="20" r="4" fill="#F26B5E"/></svg>
+          <h4>민감도분석</h4>
+          <p>잠재가격·허용 가능 증감치를 해석해 제약조건 변화가 총비용에 미치는 영향 분석</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric blue">
+          <div class="k">부경산업 최소비용</div>
+          <div class="v mono">1,590 만원</div>
+        </div>
+        <div class="metric green">
+          <div class="k">아산전자 최소비용</div>
+          <div class="v mono">499,900 원</div>
+        </div>
+      </div>
+
+      <div class="stack-row">
+        <span class="chip">Excel 해찾기</span>
+        <span class="chip">Lingo</span>
+        <span class="chip">선형계획법</span>
+        <span class="chip">민감도분석</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <h3>신경망 가중치 최적화 &<br>오차함수 비교 실험</h3>
+        <span class="tag" style="color:var(--green); border-color:rgba(62,207,142,0.35);">Neural Network</span>
+      </div>
+      <p class="project-desc">
+        Excel로 순전파·활성화 함수를 직접 수식으로 구현한 패턴 판별 신경망을 만들고,
+        초기값에 따른 수렴 여부, 손실함수 종류, 은닉층 구조 변화가 성능에 미치는 영향을 실험했습니다.
+      </p>
+
+      <div class="stage-grid">
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><circle cx="30" cy="20" r="6" fill="#4FA8E0"/><circle cx="30" cy="45" r="6" fill="#4FA8E0"/><circle cx="30" cy="70" r="6" fill="#4FA8E0"/><circle cx="100" cy="20" r="6" fill="#3ECF8E"/><circle cx="100" cy="45" r="6" fill="#3ECF8E"/><circle cx="100" cy="70" r="6" fill="#3ECF8E"/><circle cx="170" cy="45" r="6" fill="#F2C94C"/><line x1="36" y1="20" x2="94" y2="45" stroke="#233047"/><line x1="36" y1="45" x2="94" y2="20" stroke="#233047"/><line x1="36" y1="70" x2="94" y2="45" stroke="#233047"/><line x1="106" y1="45" x2="164" y2="45" stroke="#233047"/></svg>
+          <h4>가중치 · 편향 탐색</h4>
+          <p>10개의 초기값 세트로 해찾기를 실행, 초기값에 따른 수렴 여부·정답률(Case A/B/C) 비교</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><path d="M15 75 Q100 15 185 75" stroke="#F26B5E" stroke-width="2" fill="none"/><path d="M15 75 L100 15 L185 75" stroke="#3ECF8E" stroke-width="2" fill="none" opacity="0.85"/></svg>
+          <h4>오차함수 비교</h4>
+          <p>오차제곱합(빨강)과 교차 엔트로피(초록) 손실함수의 최종 비용함수 값을 비교</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><circle cx="30" cy="45" r="6" fill="#4FA8E0"/><circle cx="90" cy="25" r="6" fill="#3ECF8E"/><circle cx="90" cy="65" r="6" fill="#3ECF8E"/><circle cx="140" cy="25" r="6" fill="#F2C94C"/><circle cx="140" cy="65" r="6" fill="#F2C94C"/><circle cx="185" cy="45" r="6" fill="#F26B5E"/><line x1="36" y1="45" x2="84" y2="25" stroke="#233047"/><line x1="36" y1="45" x2="84" y2="65" stroke="#233047"/><line x1="96" y1="25" x2="134" y2="25" stroke="#233047"/><line x1="96" y1="65" x2="134" y2="65" stroke="#233047"/><line x1="146" y1="25" x2="179" y2="45" stroke="#233047"/><line x1="146" y1="65" x2="179" y2="45" stroke="#233047"/></svg>
+          <h4>은닉층 1개 → 2개 확장</h4>
+          <p>은닉층을 2단으로 늘려 순전파 수식(z, a)을 직접 재설계하고 엑셀 파일을 완성</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="20" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="45" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="70" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="95" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="120" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="145" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="170" y="20" width="14" height="14" fill="#3ECF8E"/><rect x="20" y="45" width="14" height="14" fill="#F26B5E"/><rect x="45" y="45" width="14" height="14" fill="#F26B5E"/><rect x="70" y="45" width="14" height="14" fill="#F26B5E"/></svg>
+          <h4>임의 데이터로 일반화 검증</h4>
+          <p>직접 만든 임의 패턴 10개로 테스트해 7/10 정답, 일반화 성능의 한계를 확인</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric blue">
+          <div class="k">Case A 정답률</div>
+          <div class="v mono">98%</div>
+        </div>
+        <div class="metric green">
+          <div class="k">임의 데이터 정확도</div>
+          <div class="v mono">7 / 10</div>
+        </div>
+      </div>
+
+      <div class="stack-row">
+        <span class="chip">Excel</span>
+        <span class="chip">순전파</span>
+        <span class="chip">시그모이드</span>
+        <span class="chip">교차 엔트로피</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <h3>은행 창구 시스템<br><span style="font-size:0.55em; color:var(--text-dim); font-weight:400;">번호표 발급 & 대기열 관리 프로그램</span></h3>
+        <span class="tag" style="color:var(--red); border-color:rgba(242,107,94,0.35);">C Programming</span>
+      </div>
+      <p class="project-desc">
+        은행 창구에서 흔히 볼 수 있는 번호표 발급·호출 시스템을 C언어로 직접 구현했습니다.
+        구조체와 포인터로 고객 데이터를 관리하고, 동적 메모리 할당과 파일 입출력으로
+        비정상 종료에도 상태가 보존되는 프로그램을 만들었습니다.
+      </p>
+
+      <div class="stage-grid">
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="15" y="15" width="60" height="60" rx="6" fill="none" stroke="#F26B5E" stroke-width="1.5"/><text x="25" y="40" font-family="JetBrains Mono" font-size="11" fill="#F26B5E">struct</text><text x="25" y="58" font-family="JetBrains Mono" font-size="11" fill="#F26B5E">*ptr</text><path d="M80 45 L120 45" stroke="#233047" stroke-width="1.5" marker-end="url(#arrow2)"/><defs><marker id="arrow2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#233047"/></marker></defs><circle cx="150" cy="45" r="18" fill="none" stroke="#4FA8E0" stroke-width="1.5"/><text x="138" y="49" font-family="JetBrains Mono" font-size="10" fill="#4FA8E0">대기열</text></svg>
+          <h4>구조체 기반 설계</h4>
+          <p>고객 데이터를 struct로 정의하고 포인터·이중 포인터로 대기열 구조를 설계</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="20" y="30" width="24" height="24" fill="#3ECF8E" opacity="0.85"/><rect x="55" y="30" width="24" height="24" fill="#3ECF8E" opacity="0.85"/><rect x="90" y="30" width="24" height="24" fill="none" stroke="#233047" stroke-width="1.5" stroke-dasharray="3 2"/><rect x="125" y="30" width="24" height="24" fill="none" stroke="#233047" stroke-width="1.5" stroke-dasharray="3 2"/><rect x="160" y="30" width="24" height="24" fill="none" stroke="#233047" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+          <h4>동적 메모리 관리</h4>
+          <p>고객이 번호표를 뽑는 순간에만 malloc으로 할당, 호출 완료 시 free로 즉시 해제</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="60" y="15" width="80" height="60" rx="6" fill="none" stroke="#F2C94C" stroke-width="1.5"/><line x1="72" y1="35" x2="128" y2="35" stroke="#F2C94C" stroke-width="1"/><line x1="72" y1="48" x2="128" y2="48" stroke="#F2C94C" stroke-width="1"/><line x1="72" y1="61" x2="110" y2="61" stroke="#F2C94C" stroke-width="1"/><text x="72" y="27" font-family="JetBrains Mono" font-size="9" fill="#F2C94C">data.txt</text></svg>
+          <h4>파일 입출력</h4>
+          <p>번호표 발급마다 ticket_counter를 data.txt에 실시간 기록해 비정상 종료 시 상태 복구</p>
+        </div>
+        <div class="stage">
+          <svg viewBox="0 0 200 90"><rect x="15" y="15" width="170" height="60" rx="4" fill="#0A0E17" stroke="#233047"/><text x="25" y="35" font-family="JetBrains Mono" font-size="9" fill="#3ECF8E">[102번] 발행</text><text x="25" y="50" font-family="JetBrains Mono" font-size="9" fill="#8A93A6">목적: 대출/상담</text><text x="25" y="65" font-family="JetBrains Mono" font-size="9" fill="#F2C94C">선택 : _</text></svg>
+          <h4>CLI 실행 & 테스트</h4>
+          <p>번호표 발급 · 고객 호출 · 대기 인원 초과 처리까지 콘솔에서 동작 시연</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric blue">
+          <div class="k">동시 대기 인원 제한</div>
+          <div class="v mono">5명</div>
+        </div>
+        <div class="metric green">
+          <div class="k">비정상 종료 복구</div>
+          <div class="v mono">파일 기반</div>
+        </div>
+      </div>
+
+      <div class="stack-row">
+        <span class="chip">C</span>
+        <span class="chip">구조체</span>
+        <span class="chip">포인터</span>
+        <span class="chip">malloc / free</span>
+        <span class="chip">파일 입출력</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">03 · Skills</div>
+      <h2>다루는 도구</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#4FA8E0"></div>
+        <h4>Python</h4>
+        <p>NumPy, pandas 기반 데이터 처리</p>
+      </div>
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#3ECF8E"></div>
+        <h4>scikit-learn</h4>
+        <p>회귀·정규화·모델 평가</p>
+      </div>
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#F2C94C"></div>
+        <h4>Matplotlib</h4>
+        <p>데이터 시각화</p>
+      </div>
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#F26B5E"></div>
+        <h4>C</h4>
+        <p>구조체·포인터·동적 메모리 관리</p>
+      </div>
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#4FA8E0"></div>
+        <h4>Excel 해찾기 · Lingo</h4>
+        <p>선형계획법 최적화 & 민감도분석</p>
+      </div>
+      <div class="skill-cell reveal">
+        <div class="dotc" style="background:#3ECF8E"></div>
+        <h4>신경망 순전파 설계</h4>
+        <p>수식 기반 가중치·오차함수 구현</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <h2>더 이야기 나누고 싶다면</h2>
+    <p>이메일과 링크는 준비되는 대로 채워 넣을 예정입니다.</p>
+    <div class="contact-row">
+      <a href="#" class="btn btn-primary">이메일 보내기</a>
+      <a href="#" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>이주형 © 2026 · AI융합학과</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.15 });
+  els.forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
